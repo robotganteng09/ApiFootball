@@ -2,6 +2,7 @@ package com.example.remidapi;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,6 +33,8 @@ public class DetailClub extends AppCompatActivity {
         String namaClub = intent.getStringExtra("namaClub");
         String namaStadium = intent.getStringExtra("stadion");
         String imgUrl = intent.getStringExtra("imageUrl");
+        Log.d("CEK_DETAIL_IMG_URL", "imgUrl: " + imgUrl);
+
 
         tvClub.setText(namaClub);
         tvStadium.setText(namaStadium);

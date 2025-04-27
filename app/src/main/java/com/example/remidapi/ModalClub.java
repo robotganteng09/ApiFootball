@@ -10,7 +10,7 @@ public class ModalClub {
     @SerializedName("strStadium")
     private String namaStadium;
 
-    @SerializedName("strTeamBadge")
+    @SerializedName("strBadge")
     private String imgUrl;
 
     public ModalClub(String namaClub, String namaStadium, String imgUrl){
