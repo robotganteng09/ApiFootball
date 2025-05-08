@@ -2,6 +2,8 @@ package com.example.remidapi;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -20,6 +22,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity implements AdapterListClub.OnItemClickListener {
 
     RecyclerView rvListClub;
+
+    ProgressBar PBLoading;
     AdapterListClub adapterListClub;
     ArrayList<ModalClub> dataClub = new ArrayList<>();
 
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements AdapterListClub.O
 
         rvListClub = findViewById(R.id.rvListClub);
         rvListClub.setLayoutManager(new LinearLayoutManager(this));
+        PBLoading = findViewById(R.id.PBloading);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.thesportsdb.com")
@@ -47,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements AdapterListClub.O
                     dataClub = new ArrayList<>(response.body().getTeams());
                     adapterListClub = new AdapterListClub(dataClub, MainActivity.this);
                     rvListClub.setAdapter(adapterListClub);
+                    rvListClub.setVisibility(View.VISIBLE);
+                    PBLoading.setVisibility(View.GONE);
                 } else {
                     Toast.makeText(MainActivity.this, "Failed to load data", Toast.LENGTH_SHORT).show();
                 }
